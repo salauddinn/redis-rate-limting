@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rate limiter Node.js and Redis</title>
+	</head>
+	<body>
+		<h1>Hit an API</h1>
+		<button id="api1">Hit API</button>
+
+		<pre id="output"></pre>
+
+		<script>
+			const api1 = document.getElementById('api1')
+			const output = document.getElementById('output')
+
+			api1.addEventListener('click', hitApi)
+
+			async function hitApi(id) {
+				const res = await fetch(`/api/post`, { method: 'POST' }).then((t) => t.json())
+
+				output.innerText += `\nResponse: ${res.status}`
+			}
+		</script>
+	</body>
+</html>
